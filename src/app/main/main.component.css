@@ -1,0 +1,24 @@
+.container {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    width: 600px;
+    min-height: 111px;
+    height: 100%;
+    margin: 0 auto;
+    box-sizing: border-box;
+    margin-top: 5vh;
+}
+
+.header {
+    display: flex;
+    background-color: #5d8ffc;
+    height: 50px;
+    padding: 0 15px;
+}
+
+.header .center {
+    flex: 5;
+    color: #fff;
+    text-align: center;
+    font-size: 28px;
+    line-height: 50px;
+}

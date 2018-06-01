@@ -1,0 +1,35 @@
+.displayItems {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.displayItems li {
+    display: flex;
+    font-size: 16px;
+    height: 40px;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+    transition: 200ms ease;
+}
+
+.displayItems li:hover {
+    background-color: #eee;
+}
+
+.item-icon {
+    flex: 1;
+    padding: 6px 0 6px 10px;
+}
+
+.item-name {
+    flex: 12;
+    padding: 10px;
+}
+
+.item-modified {
+    flex: 6;
+    text-align: right;
+    padding: 10px;
+}

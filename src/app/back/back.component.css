@@ -1,0 +1,20 @@
+.left {
+    flex: 1;
+    text-align: left;
+    line-height: 50px;
+}
+
+.left a {
+    cursor: pointer;
+    color: #fff;
+}
+
+.left img {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.left span {
+    font-size: 16px;
+    vertical-align: middle;
+}

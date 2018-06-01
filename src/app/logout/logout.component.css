@@ -1,0 +1,10 @@
+.right {
+    flex: 1;
+    color: #fff;
+    text-align: right;
+    line-height: 50px;
+}
+
+.right img {
+    margin-top: 16px;
+}
