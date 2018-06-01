@@ -18,6 +18,7 @@ import { DatalistComponent } from './datalist/datalist.component';
 import { LoginComponent } from './login/login.component';
 import { UploadComponent } from './upload/upload.component';
 import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
+import { SearchComponent } from './search/search.component';
 
 // Search
 
@@ -31,7 +32,8 @@ import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
     LogoutComponent,
     LoginComponent,
     UploadComponent,
-    BreadcrumbsComponent
+    BreadcrumbsComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,

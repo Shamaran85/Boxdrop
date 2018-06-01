@@ -1,0 +1,22 @@
+.right {
+    display: inline-block;
+    width: 155px;
+    text-align: right;
+}
+
+.right button {
+    /* display: inline-block; */
+    background: #5d8ffc;
+    color: #ffffff;
+    border: 1px solid #5d8ffc;
+    padding: 8px 22px;
+    margin-top: 14px;
+    transition: 0.3s;
+}
+
+.right button:hover {
+    background: #eee;
+    color: #5d8ffc;
+    border: 1px solid #5d8ffc;
+    cursor: pointer;
+}
