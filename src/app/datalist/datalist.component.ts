@@ -38,4 +38,18 @@ export class DatalistComponent implements OnInit {
     return displayDate;
   }
 
+  saveFile(id, name) {
+    const token = this.dropbox.accessToken;
+    const path = id;
+    const dbx = new Dropbox({ accessToken: token });
+    dbx.filesDownload({ path: path })
+      .then(function (data: any) {
+        const blobURL = URL.createObjectURL((<any>data).fileBlob);
+        const fileURL = document.createElement('a');
+        fileURL.setAttribute('href', blobURL);
+        fileURL.setAttribute('download', name);
+        fileURL.click();
+      });
+  }
+
 }
