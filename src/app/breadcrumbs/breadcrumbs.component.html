@@ -1,3 +1,5 @@
-<div class="breadcrumbs">
-  <a href="#">home / documents / work</a>
-</div>
+<ul class="breadcrumb" *ngFor="let bc of breadcrumbs">
+  <li>
+    <a routerLink="{{bc}}">{{bc}}</a>
+  </li>
+</ul>

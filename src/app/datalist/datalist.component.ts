@@ -25,4 +25,17 @@ export class DatalistComponent implements OnInit {
     });
   }
 
+  formatFileSize(a, b) {
+    if (1024 >= a) { return '1 KB'; } const c = 1024, d = b || 2,
+      e = ['Bytes', 'KB', 'MB', 'GB'],
+      f = Math.floor(Math.log(a) / Math.log(c));
+    return parseFloat((a / Math.pow(c, f)).toFixed(d)) + ' ' + e[f];
+  }
+
+  formatDateTime(date) {
+    const newDate = new Date(date);
+    const displayDate = newDate.toISOString().slice(0, 19).replace('T', ' ');
+    return displayDate;
+  }
+
 }

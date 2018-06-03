@@ -10,12 +10,22 @@ import { DataService } from '../data.service';
 })
 export class BreadcrumbsComponent implements OnInit {
 
-  constructor(public dropbox: DataService, private router: Router, private activeroute: ActivatedRoute) { }
+  breadcrumbs = [];
 
-  ngOnInit() {
-    console.log('bcrum: ', this.router.url);
+  constructor(public dropbox: DataService, private router: Router, private activeroute: ActivatedRoute) {
+    this.activeroute.url.subscribe((items) => {
+      const breadcrumbs = this.breadcrumbs;
+      const tmp = this.router.url;
+      const main = tmp.split('/');
+      breadcrumbs.splice(0, breadcrumbs.length);
+      breadcrumbs.push(main);
+
+      for (const crumb of breadcrumbs) {
+        console.log(crumb);
+      }
+    });
   }
 
-
+  ngOnInit() { }
 
 }
