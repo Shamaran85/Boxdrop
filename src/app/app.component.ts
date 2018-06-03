@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Dropbox } from 'dropbox';
-// import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-root',
