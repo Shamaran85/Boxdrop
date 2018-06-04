@@ -9,12 +9,18 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 export class BackComponent {
 
-  constructor(private router: Router, private activeroute: ActivatedRoute) { }
+  pathArray = [];
 
-  goBack() {
-    if (this.router.url !== '/') {
-      return window.history.back();
-    }
+  constructor(private router: Router, private activeroute: ActivatedRoute) {
+    const pathArray = this.router.url.split('/');
+    pathArray.pop();
   }
+
+  // goBack() {
+  //   if (this.router.url !== '/') {
+  //     return window.history.back();
+  //   }
+  // }
+
 
 }

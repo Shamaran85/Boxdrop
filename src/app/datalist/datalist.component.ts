@@ -16,7 +16,7 @@ export class DatalistComponent implements OnInit {
 
   ngOnInit() {
     this.dropbox.stream.subscribe((items) => {
-      console.log('main items: ', items);
+      // console.log('main items: ', items);
       this.items = items;
     });
 
