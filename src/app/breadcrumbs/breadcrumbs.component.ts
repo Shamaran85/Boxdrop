@@ -25,11 +25,13 @@ export class BreadcrumbsComponent implements OnInit {
         if (path !== '') {
           fullpath = fullpath + '/' + path;
         }
+
         const breadcrumb = {
           fullpath: fullpath,
           path: path
         };
         this.breadcrumbs.push(breadcrumb);
+        console.log(breadcrumb);
       }
     });
   }
