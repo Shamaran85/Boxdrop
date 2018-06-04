@@ -3,6 +3,12 @@
     text-align: left;
 }
 
+li {
+    display: inline-block;
+    list-style-type: none;
+    padding: 3px;
+}
+
 a {
     text-decoration: none;
 }
