@@ -1,5 +1,7 @@
-<ul class="breadcrumbs">
-  <li *ngFor="let breadcrumb of breadcrumbs"> | 
-    <a routerLink="{{breadcrumb.fullpath}}">{{breadcrumb.path}}</a>
+<ol class="crumbs">
+  <li class="bc" *ngFor="let breadcrumb of breadcrumbs">
+    <a routerLink="{{breadcrumb.fullpath}}">
+      {{breadcrumb.path === '' ? 'home' : breadcrumb.path}}
+    </a>
   </li>
-</ul>
+</ol>

@@ -18,8 +18,12 @@ export class BreadcrumbsComponent implements OnInit {
       this.breadcrumbs = [];
       let fullpath = '';
 
-      const pathArray = this.router.url.split('/');
-      pathArray.shift();
+
+      let pathArray = this.router.url.split('/');
+      if (this.router.url === '' || this.router.url === '/') {
+        pathArray = [''];
+      }
+
 
       for (const path of pathArray) {
         if (path !== '') {
@@ -31,9 +35,13 @@ export class BreadcrumbsComponent implements OnInit {
           path: path
         };
         this.breadcrumbs.push(breadcrumb);
-        console.log(breadcrumb);
+        // console.log('bc: ', this.breadcrumbs);
       }
+
+      console.log('bc: ', this.breadcrumbs, this.router.url);
+
     });
+
   }
 
   ngOnInit() { }
