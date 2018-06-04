@@ -13,7 +13,8 @@
         <img src="./assets/images/icon-file.png " alt="icon-file ">
       </div>
       <div class="item-name ">{{item.name}}</div>
-      <div class="item-modified ">{{item.server_modified}}</div>
+      <!-- <div class="item-name ">{{formatFileSize(item.size)}}</div> -->
+      <div class="item-modified ">{{formatDateTime(item.server_modified)}}</div>
     </li>
 
   </ul>
