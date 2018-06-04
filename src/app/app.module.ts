@@ -19,6 +19,8 @@ import { LoginComponent } from './login/login.component';
 import { UploadComponent } from './upload/upload.component';
 import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
 import { SearchComponent } from './search/search.component';
+/*import { FavoritesComponent } from './favorites/favorites.component';
+import { ContentComponent } from './content/content.component';*/
 
 // Search
 
@@ -33,7 +35,9 @@ import { SearchComponent } from './search/search.component';
     LoginComponent,
     UploadComponent,
     BreadcrumbsComponent,
-    SearchComponent
+    SearchComponent,
+    /*FavoritesComponent,
+    ContentComponent*/
   ],
   imports: [
     BrowserModule,
