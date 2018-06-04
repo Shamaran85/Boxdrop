@@ -3,6 +3,17 @@
     text-align: left;
 }
 
+li {
+    display: inline-block;
+    list-style-type: none;
+    padding: 0 3px;
+}
+
 a {
     text-decoration: none;
+    color: #555;
+}
+
+a:hover {
+    color: #5d8ffc
 }
