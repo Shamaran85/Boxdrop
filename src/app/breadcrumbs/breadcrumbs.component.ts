@@ -14,14 +14,22 @@ export class BreadcrumbsComponent implements OnInit {
 
   constructor(public dropbox: DataService, private router: Router, private activeroute: ActivatedRoute) {
     this.activeroute.url.subscribe((items) => {
-      const breadcrumbs = this.breadcrumbs;
-      const tmp = this.router.url;
-      const main = tmp.split('/');
-      breadcrumbs.splice(0, breadcrumbs.length);
-      breadcrumbs.push(main);
 
-      for (const crumb of breadcrumbs) {
-        console.log(crumb);
+      this.breadcrumbs = [];
+      let fullpath = '';
+
+      const pathArray = this.router.url.split('/');
+      pathArray.shift();
+
+      for (const path of pathArray) {
+        if (path !== '') {
+          fullpath = fullpath + '/' + path;
+        }
+        const breadcrumb = {
+          fullpath: fullpath,
+          path: path
+        };
+        this.breadcrumbs.push(breadcrumb);
       }
     });
   }
