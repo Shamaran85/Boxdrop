@@ -1,0 +1,20 @@
+.crumbs {
+    display: block;
+    text-align: left;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    display: inline-block;
+    padding: 0 13px 0 0;
+}
+
+a {
+    text-decoration: none;
+    color: #555;
+}
+
+a:hover {
+    color: #5d8ffc
+}

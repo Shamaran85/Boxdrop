@@ -1,3 +1,12 @@
-<p>
-  upload works!
-</p>
+<!--
+<div class="right">
+  <button id="uploadFile" (click)="uploadYourFile()">Upload</button>
+</div>
+-->
+<div class="right">
+<form (ngSubmit)="uploadYourFile()">
+    <!--<<input type="text" id="access-token" placeholder="Access token"/>-->
+    <input type="file" id="file-upload" />
+    <button id="uploadFile" type="submit">Submit</button>
+  </form>
+</div>

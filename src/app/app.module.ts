@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 // Services & Routes
 import { DataService } from './data.service';
@@ -16,10 +17,11 @@ import { LogoutComponent } from './logout/logout.component';
 import { DatalistComponent } from './datalist/datalist.component';
 import { LoginComponent } from './login/login.component';
 import { UploadComponent } from './upload/upload.component';
+import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
+import { SearchComponent } from './search/search.component';
+/*import { FavoritesComponent } from './favorites/favorites.component';
+import { ContentComponent } from './content/content.component';*/
 
-// Breadcrumbs
-// Upload
-// Login
 // Search
 
 
@@ -31,12 +33,17 @@ import { UploadComponent } from './upload/upload.component';
     BackComponent,
     LogoutComponent,
     LoginComponent,
-    UploadComponent
+    UploadComponent,
+    BreadcrumbsComponent,
+    SearchComponent,
+    /*FavoritesComponent,
+    ContentComponent*/
   ],
   imports: [
     BrowserModule,
     HttpModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    FormsModule
   ],
   providers: [DataService],
   bootstrap: [AppComponent]

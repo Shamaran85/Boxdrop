@@ -1,0 +1,12 @@
+.left {
+    display: inline-block;
+    width: 415px;
+}
+
+.left input {
+    margin: 15px 0;
+    border: 0;
+    box-shadow: 0 1px 4px 0 rgba(12, 12, 13, 0.1), 0 0 0 1px rgba(0, 0, 0, 0.15);
+    padding: 10px;
+    width: 100%;
+}
