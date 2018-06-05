@@ -1,35 +1,3 @@
-<<<<<<< HEAD
-<div class="content">
-
-  <ul class="displayItems" *ngFor="let item of items">
-    <li class="itemFolder" *ngIf="item['.tag'] === 'folder'" routerLink="{{item.path_lower}}">
-      <div class="item-icon ">
-        <img src="./assets/images/icon-folder.png " alt="icon-folder ">
-      </div>
-      <div class="item-name ">{{item.name}}</div>
-    </li>
-
-    <li class="itemFile " *ngIf="item[ '.tag']==='file' " (click)="saveFile(item.id, item.name) ">
-      <div class="item-icon ">
-        <img src="./assets/images/icon-file.png " alt="icon-file ">
-      </div>
-      <div class="item-name ">{{item.name}}</div>
-      <!-- <div class="item-name ">{{formatFileSize(item.size)}}</div> -->
-      <div class="item-modified ">{{formatDateTime(item.server_modified)}}</div>
-    </li>
-
-    <li class="itemFile " *ngIf="item[ '.tag']==='images' " (click)="saveFile(item.id, item.name) ">
-      <div class="item-icon ">
-        <img ngf-background="file"  alt="icon-file ">
-      </div>
-      <div class="item-name ">{{item.name}}</div>
-    
-      <div class="item-modified ">{{formatDateTime(item.server_modified)}}</div>
-    </li>
-
-  </ul>
-</div>
-=======
 <!-- <div class="content"> -->
 <!-- <ul class="displayItems" *ngFor="let item of items">
 
@@ -91,4 +59,3 @@
     </td>
   </tr>
 </table>
->>>>>>> e8f728fb6c289644627d79a6947b276b07e3a6e8
