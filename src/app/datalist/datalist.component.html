@@ -47,13 +47,15 @@
     <td>
       <i class="material-icons">{{item['.tag'] === 'file' ? 'insert_drive_file' : 'folder'}}</i>
     </td>
-    <td *ngIf="item['.tag']==='file'" (click)="saveFile(item.id, item.name)">{{item.name}}</td>
-    <td *ngIf="item['.tag']==='folder'" routerLink="{{item.path_lower}}">{{item.name}}</td>
+    <td class="table-file" *ngIf="item['.tag']==='file'" (click)="saveFile(item.id, item.name)">{{item.name}}</td>
+    <td class="table-folder" *ngIf="item['.tag']==='folder'" routerLink="{{item.path_lower}}">{{item.name}}</td>
     <td>{{item['.tag'] === 'file' ? formatFileSize(item.size) : ''}}</td>
     <td>{{item['.tag'] === 'file' ? formatDateTime(item.server_modified) : ''}}</td>
     <td>
-      <i class="material-icons ">star_border</i>
+      <i class="material-icons star-icon">star</i>
     </td>
-    <td (click)="thumbs(item.id)">{{item.id}}</td>
+    <td>
+      <i class="material-icons download-icon" (click)="saveFile(item.id, item.name)">{{item['.tag'] === 'file' ? 'cloud_download' : ''}}</i>
+    </td>
   </tr>
 </table>

@@ -55,10 +55,10 @@ td {
     outline: none;
 }
 
-td:nth-child(2):hover {
+/* td:nth-child(2):hover {
     cursor: pointer;
     color: #5d8ffc;
-}
+} */
 
 td:first-child {
     width: 25px;
@@ -71,4 +71,16 @@ tr:nth-child(even) {
 
 .material-icons {
     color: #555;
+}
+
+.download-icon, .star-icon, .table-folder {
+    cursor: pointer;
+}
+
+.download-icon:hover, .table-folder:hover {
+    color: #5d8ffc;
+}
+
+.star-icon:hover {
+    color: gold;
 }
