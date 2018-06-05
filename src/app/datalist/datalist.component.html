@@ -5,7 +5,6 @@
     </div>
     <div class="item-name" *ngIf="item['.tag']==='file'">{{item.name}}</div>
     <div class="item-name" *ngIf="item['.tag']==='folder'" routerLink="{{item.path_lower}}">{{item.name}}</div>
-    <!-- <div class="item-name">{{item.name}}</div> -->
     <div class="item-size">{{item['.tag'] === 'file' ? formatFileSize(item.size) : ''}}</div>
     <div class="item-modified">{{item['.tag'] === 'file' ? formatDateTime(item.server_modified) : ''}}</div>
     <div class="item-star">
@@ -26,7 +25,6 @@
     </div>
     <div class="item-name" *ngIf="item['.tag']==='file'">{{item.name}}</div>
     <div class="item-name" *ngIf="item['.tag']==='folder'" routerLink="{{item.path_lower}}">{{item.name}}</div>
-    <!-- <div class="item-name">{{item.name}}</div> -->
     <div class="item-size">{{item['.tag'] === 'file' ? formatFileSize(item.size) : ''}}</div>
     <div class="item-modified">{{item['.tag'] === 'file' ? formatDateTime(item.server_modified) : ''}}</div>
     <div class="item-star">
@@ -39,51 +37,3 @@
     </div>
   </div>
 </div>
-
-
-<!-- 
-
-
-
-
-<table>
-  <tr *ngFor="let item of items">
-    <div class="starred-list" *ngIf="starItems.indexOf(item.id) > -1">
-      <td>
-        <i class="material-icons ">{{item['.tag'] === 'file' ? 'insert_drive_file' : 'folder'}}</i>
-      </td>
-      <td class="table-file " *ngIf="item[ '.tag']==='file' ">{{item.name}}</td>
-      <td class="table-folder " *ngIf="item[ '.tag']==='folder' " routerLink="{{item.path_lower}}">{{item.name}}</td>
-      <td>{{item['.tag'] === 'file' ? formatFileSize(item.size) : ''}}</td>
-      <td>{{item['.tag'] === 'file' ? formatDateTime(item.server_modified) : ''}}</td>
-      <td>
-        <i class="material-icons star-icon " (click)="starItem(item.id) ">
-          {{starItems.indexOf(item.id)
-          < 0 ? 'star_border' : 'star'}} </i>
-      </td>
-      <td class="download-icon ">
-        <i class="material-icons download-icon " (click)="saveFile(item.id, item.name) ">{{item['.tag'] === 'file' ? 'cloud_download' : ''}}</i>
-      </td>
-    </div>
-  </tr>
-  <div class="normal-list" *ngFor="let item of items">
-    <tr *ngIf="starItems.indexOf(item.id) === -1">
-      <td>
-        <i class="material-icons ">{{item['.tag'] === 'file' ? 'insert_drive_file' : 'folder'}}</i>
-      </td>
-      <td class="table-file " *ngIf="item[ '.tag']==='file' ">{{item.name}}</td>
-      <td class="table-folder " *ngIf="item[ '.tag']==='folder' " routerLink="{{item.path_lower}}">{{item.name}}</td>
-      <td>{{item['.tag'] === 'file' ? formatFileSize(item.size) : ''}}</td>
-      <td>{{item['.tag'] === 'file' ? formatDateTime(item.server_modified) : ''}}</td>
-      <td>
-        <i class="material-icons star-icon " (click)="starItem(item.id) ">
-          {{starItems.indexOf(item.id)
-          < 0 ? 'star_border' : 'star'}} </i>
-      </td>
-      <td class="download-icon ">
-        <i class="material-icons download-icon " (click)="saveFile(item.id, item.name) ">{{item['.tag'] === 'file' ? 'cloud_download' : ''}}</i>
-      </td>
-    </tr>
-  </div>
-
-</table> -->

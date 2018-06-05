@@ -44,36 +44,30 @@
 .item-icon {
     text-align: center;
     flex: 0 0 40px;
-    /* background-color: red; */
 }
 
 .item-name {
     flex: 0 0 300px;
     line-height: 25px;
     outline: none;
-    /* background-color: blue; */
 }
 
 .item-size {
     flex: 0 0 100px;
     line-height: 25px;
-    /* background-color: red; */
 }
 
 .item-modified {
     flex: 0 0 160px;
     line-height: 25px;
-    /* background-color: green; */
 }
 
 .item-star {
     text-align: center;
     flex: 0 0 40px;
-    /* background-color: blue; */
 }
 
 .item-download {
     text-align: center;
     flex: 0 0 40px;
-    /* background-color: red; */
 }
