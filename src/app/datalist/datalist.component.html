@@ -1,6 +1,6 @@
 <table>
-  <thead *ngFor="let item of items">
-    <tr class="starred-list" *ngIf="starItems.indexOf(item.id) > -1">
+  <tr *ngFor="let item of items">
+    <div class="starred-list" *ngIf="starItems.indexOf(item.id) > -1">
       <td>
         <i class="material-icons ">{{item['.tag'] === 'file' ? 'insert_drive_file' : 'folder'}}</i>
       </td>
@@ -16,10 +16,10 @@
       <td class="download-icon ">
         <i class="material-icons download-icon " (click)="saveFile(item.id, item.name) ">{{item['.tag'] === 'file' ? 'cloud_download' : ''}}</i>
       </td>
-    </tr>
-  </thead>
-  <tbody *ngFor="let item of items">
-    <tr *ngIf="starItems.indexOf(item.id) === -1">
+    </div>
+  </tr>
+  <tr *ngFor="let item of items">
+    <div *ngIf="starItems.indexOf(item.id) === -1">
       <td>
         <i class="material-icons ">{{item['.tag'] === 'file' ? 'insert_drive_file' : 'folder'}}</i>
       </td>
@@ -35,6 +35,6 @@
       <td class="download-icon ">
         <i class="material-icons download-icon " (click)="saveFile(item.id, item.name) ">{{item['.tag'] === 'file' ? 'cloud_download' : ''}}</i>
       </td>
-    </tr>
-  </tbody>
+    </div>
+  </tr>
 </table>

@@ -25,7 +25,7 @@ export class DatalistComponent implements OnInit {
       this.router.url === '/' ? this.dropbox.getData('') : this.dropbox.getData(this.router.url);
     });
 
-    if (this.starItems.length <= 0) {
+    if (localStorage.getItem('staritems') !== null) {
       this.starItems = JSON.parse(localStorage.getItem('staritems'));
     }
   }
