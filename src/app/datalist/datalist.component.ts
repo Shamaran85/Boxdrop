@@ -23,6 +23,7 @@ export class DatalistComponent implements OnInit {
     this.activeroute.url.subscribe((items) => {
       this.router.url === '/' ? this.dropbox.getData('') : this.dropbox.getData(this.router.url);
     });
+
   }
 
   formatFileSize(a, b) {
@@ -51,5 +52,25 @@ export class DatalistComponent implements OnInit {
         fileURL.click();
       });
   }
+
+  thumbs(id) {
+    const token = this.dropbox.accessToken;
+    const path = id;
+    const dbx = new Dropbox({ accessToken: token });
+    dbx.filesGetThumbnail({ path: path })
+      .then(function (data: any) {
+        console.log(data);
+        return data.name;
+      });
+  }
+
+
+  // thumb(id) {
+  //   const path = id;
+  //   this.dropbox.getThumbnail(path).subscribe((data: any) => {
+  //     console.log('data: ', data);
+  //   });
+  // }
+
 
 }
