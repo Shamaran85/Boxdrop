@@ -59,8 +59,13 @@ export class DatalistComponent implements OnInit {
     const dbx = new Dropbox({ accessToken: token });
     dbx.filesGetThumbnail({ path: path })
       .then(function (data: any) {
-        console.log(data);
-        return data.name;
+        const img = document.createElement('img');
+        img.src = window.URL.createObjectURL(data.fileBlob);
+        document.body.appendChild(img);
+      })
+      .catch(function(error) {
+        console.log('got error:', error);
+
       });
   }
 

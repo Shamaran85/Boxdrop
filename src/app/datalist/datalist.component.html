@@ -47,7 +47,7 @@
     <td>
       <i class="material-icons">{{item['.tag'] === 'file' ? 'insert_drive_file' : 'folder'}}</i>
     </td>
-    <td class="table-file" *ngIf="item['.tag']==='file'">{{item.name}}</td>
+    <td class="table-file" (click)="thumbs(item.id)" *ngIf="item['.tag']==='file'">{{item.name}}</td>
     <td class="table-folder" *ngIf="item['.tag']==='folder'" routerLink="{{item.path_lower}}">{{item.name}}</td>
     <td>{{item['.tag'] === 'file' ? formatFileSize(item.size) : ''}}</td>
     <td>{{item['.tag'] === 'file' ? formatDateTime(item.server_modified) : ''}}</td>
