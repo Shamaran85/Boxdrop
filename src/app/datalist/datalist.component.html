@@ -42,6 +42,11 @@
  -->
 
 
+<!-- <div class="test" *ngFor="let star of starItems">
+  <p>{{star}}</p>
+</div> -->
+
+
 <table>
   <tr *ngFor="let item of items">
     <td>
@@ -52,8 +57,16 @@
     <td>{{item['.tag'] === 'file' ? formatFileSize(item.size) : ''}}</td>
     <td>{{item['.tag'] === 'file' ? formatDateTime(item.server_modified) : ''}}</td>
     <td>
-      <i class="material-icons star-icon">star</i>
+      <!-- <i class="material-icons star-icon" (click)="starItem(item.id)">star</i> -->
+
+
+
+      <i class="material-icons star-icon" (click)="starItem(item.id)">star</i>
+      <i class="material-icons star-icon" *ngIf=" (starItems.indexOf(item.id)> -1)" (click)="kick(item.id)">star_border</i>
+
     </td>
+    <!-- <td *ngFor="let star of starItems">
+      {{item.id === star ? 'star' : 'star_border'}}</td> -->
     <td>
       <i class="material-icons download-icon" (click)="saveFile(item.id, item.name)">{{item['.tag'] === 'file' ? 'cloud_download' : ''}}</i>
     </td>

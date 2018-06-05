@@ -11,6 +11,7 @@ import { DataService } from '../data.service';
 export class DatalistComponent implements OnInit {
 
   items = [];
+  starItems = [];
 
   constructor(public dropbox: DataService, private router: Router, private activeroute: ActivatedRoute) { }
 
@@ -23,6 +24,8 @@ export class DatalistComponent implements OnInit {
     this.activeroute.url.subscribe((items) => {
       this.router.url === '/' ? this.dropbox.getData('') : this.dropbox.getData(this.router.url);
     });
+
+    const starItems = this.starItems;
 
   }
 
@@ -53,16 +56,46 @@ export class DatalistComponent implements OnInit {
       });
   }
 
-  thumbs(id) {
-    const token = this.dropbox.accessToken;
-    const path = id;
-    const dbx = new Dropbox({ accessToken: token });
-    dbx.filesGetThumbnail({ path: path })
-      .then(function (data: any) {
-        console.log(data);
-        return data.name;
-      });
+
+  starItem(id) {
+    const starId = id;
+    const tmp = this.starItems.indexOf(starId);
+    // this.starItems.push(starId);
+
+    // this.starItems = this.starItems.filter(e => e !== starId);
+
+    if (starId !== tmp) {
+      this.starItems.push(starId);
+      console.log('if: ', this.starItems);
+    } else {
+      // this.starItems = this.starItems.filter(e => e !== starId);
+      this.starItems.splice(this.starItems.indexOf(starId), 1);
+      console.log('else: ', this.starItems);
+    }
   }
+  //   this.starItems.push(id);
+  //   console.log(this.starItems);
+
+  //   this.testaMig(starId);
+  // }
+
+
+  kick(id) {
+    const starId = id;
+    this.starItems.splice(this.starItems.indexOf(starId), 1);
+  }
+
+
+  // thumbs(id) {
+  //   const token = this.dropbox.accessToken;
+  //   const path = id;
+  //   const dbx = new Dropbox({ accessToken: token });
+  //   dbx.filesGetThumbnail({ path: path })
+  //     .then(function (data: any) {
+  //       console.log(data);
+  //       return data.name;
+  //     });
+  // }
 
 
   // thumb(id) {
