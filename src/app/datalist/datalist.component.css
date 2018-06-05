@@ -75,6 +75,7 @@ tr:nth-child(even) {
 
 .download-icon, .star-icon, .table-folder {
     cursor: pointer;
+    transition: 200ms ease;
 }
 
 .download-icon:hover, .table-folder:hover {
