@@ -25,8 +25,9 @@ export class DatalistComponent implements OnInit {
       this.router.url === '/' ? this.dropbox.getData('') : this.dropbox.getData(this.router.url);
     });
 
-    const starItems = this.starItems;
-
+    if (this.starItems.length <= 0) {
+      this.starItems = JSON.parse(localStorage.getItem('staritems'));
+    }
   }
 
   formatFileSize(a, b) {
@@ -56,34 +57,26 @@ export class DatalistComponent implements OnInit {
       });
   }
 
-
   starItem(id) {
     const starId = id;
     const tmp = this.starItems.indexOf(starId);
-    // this.starItems.push(starId);
 
-    // this.starItems = this.starItems.filter(e => e !== starId);
-
-    if (starId !== tmp) {
+    if (this.starItems.indexOf(starId) === -1) {
       this.starItems.push(starId);
-      console.log('if: ', this.starItems);
+      console.log('ID pushed: ', starId);
+      this.saveToLocalStorage();
     } else {
-      // this.starItems = this.starItems.filter(e => e !== starId);
       this.starItems.splice(this.starItems.indexOf(starId), 1);
-      console.log('else: ', this.starItems);
+      console.log('ID removed: ', starId);
+      this.saveToLocalStorage();
     }
+    console.log(this.starItems);
   }
-  //   this.starItems.push(id);
-  //   console.log(this.starItems);
 
-  //   this.testaMig(starId);
-  // }
-
-
-  kick(id) {
-    const starId = id;
-    this.starItems.splice(this.starItems.indexOf(starId), 1);
+  saveToLocalStorage() {
+    localStorage.setItem('staritems', JSON.stringify(this.starItems));
   }
+
 
 
   // thumbs(id) {
