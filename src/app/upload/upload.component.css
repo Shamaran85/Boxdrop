@@ -1,11 +1,10 @@
-.right {
+/* .right {
     display: inline-block;
     width: 155px;
     text-align: right;
 }
 
-.right button {
-    /* display: inline-block; */
+button {
     background: #5d8ffc;
     color: #ffffff;
     border: 1px solid #5d8ffc;
@@ -14,9 +13,13 @@
     transition: 0.3s;
 }
 
-.right button:hover {
+button:hover {
     background: #eee;
     color: #5d8ffc;
     border: 1px solid #5d8ffc;
     cursor: pointer;
+} */
+
+.upload-content {
+    padding: 15px;
 }
