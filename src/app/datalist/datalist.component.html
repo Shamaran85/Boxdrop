@@ -1,61 +1,89 @@
-<!-- <div class="content"> -->
-<!-- <ul class="displayItems" *ngFor="let item of items">
-
-  <li class="itemFolder" *ngIf="item['.tag'] === 'folder'" routerLink="{{item.path_lower}}">
-    <div class="item-icon ">
-      <img src="./assets/images/icon-folder.png " alt="icon-folder ">
+<div *ngFor="let item of items">
+  <div class="star-list-item" *ngIf="starItems.indexOf(item.id) > -1">
+    <div class="item-icon">
+      <i class="material-icons ">{{item['.tag'] === 'file' ? 'insert_drive_file' : 'folder'}}</i>
     </div>
-    <div class="item-name ">{{item.name}}</div>
-  </li> -->
-
-<!-- <li class="itemFile " *ngIf="item[ '.tag']==='file' " (click)="saveFile(item.id, item.name) ">
-    <div class="item-icon ">
-      <img src="./assets/images/icon-file.png " alt="icon-file ">
+    <div class="item-name" *ngIf="item['.tag']==='file'">{{item.name}}</div>
+    <div class="item-name" *ngIf="item['.tag']==='folder'" routerLink="{{item.path_lower}}">{{item.name}}</div>
+    <!-- <div class="item-name">{{item.name}}</div> -->
+    <div class="item-size">{{item['.tag'] === 'file' ? formatFileSize(item.size) : ''}}</div>
+    <div class="item-modified">{{item['.tag'] === 'file' ? formatDateTime(item.server_modified) : ''}}</div>
+    <div class="item-star">
+      <i class="material-icons star-icon " (click)="starItem(item.id) ">
+        {{starItems.indexOf(item.id)
+        < 0 ? 'star_border' : 'star'}} </i>
     </div>
-    <div class="item-name ">{{item.name}}</div>
-    <div class="item-name ">{{formatFileSize(item.size)}}</div>
-    <div class="item-modified ">{{formatDateTime(item.server_modified)}}</div>
-  </li> -->
-
-<!-- <li class="itemFile " *ngIf="item[ '.tag']==='file' " (click)="saveFile(item.id, item.name) ">
-    <div class="item-icon ">
-      <i class="material-icons">insert_drive_file</i>
+    <div class="item-download">
+      <i class="material-icons download-icon " (click)="saveFile(item.id, item.name) ">{{item['.tag'] === 'file' ? 'cloud_download' : ''}}</i>
     </div>
-    <div class="item-name ">{{item.name}}</div>
-    <div class="item-size ">{{formatFileSize(item.size)}}</div>
-    <div class="item-modified ">{{formatDateTime(item.server_modified)}}</div>
-  </li> -->
+  </div>
+</div>
 
-
-<!-- </ul> -->
-<!-- </div> -->
+<div *ngFor="let item of items">
+  <div class="list-item" *ngIf="starItems.indexOf(item.id) === -1">
+    <div class="item-icon">
+      <i class="material-icons ">{{item['.tag'] === 'file' ? 'insert_drive_file' : 'folder'}}</i>
+    </div>
+    <div class="item-name" *ngIf="item['.tag']==='file'">{{item.name}}</div>
+    <div class="item-name" *ngIf="item['.tag']==='folder'" routerLink="{{item.path_lower}}">{{item.name}}</div>
+    <!-- <div class="item-name">{{item.name}}</div> -->
+    <div class="item-size">{{item['.tag'] === 'file' ? formatFileSize(item.size) : ''}}</div>
+    <div class="item-modified">{{item['.tag'] === 'file' ? formatDateTime(item.server_modified) : ''}}</div>
+    <div class="item-star">
+      <i class="material-icons star-icon " (click)="starItem(item.id) ">
+        {{starItems.indexOf(item.id)
+        < 0 ? 'star_border' : 'star'}} </i>
+    </div>
+    <div class="item-download">
+      <i class="material-icons download-icon " (click)="saveFile(item.id, item.name) ">{{item['.tag'] === 'file' ? 'cloud_download' : ''}}</i>
+    </div>
+  </div>
+</div>
 
 
 <!-- 
 
-  All needed icons
 
-<i class="material-icons">star_border</i>
-<i class="material-icons">star</i>
-<i class="material-icons">folder</i>
-<i class="material-icons">insert_drive_file</i>
- -->
 
 
 <table>
   <tr *ngFor="let item of items">
-    <td>
-      <i class="material-icons">{{item['.tag'] === 'file' ? 'insert_drive_file' : 'folder'}}</i>
-    </td>
-    <td class="table-file" (click)="thumbs(item.id)" *ngIf="item['.tag']==='file'">{{item.name}}</td>
-    <td class="table-folder" *ngIf="item['.tag']==='folder'" routerLink="{{item.path_lower}}">{{item.name}}</td>
-    <td>{{item['.tag'] === 'file' ? formatFileSize(item.size) : ''}}</td>
-    <td>{{item['.tag'] === 'file' ? formatDateTime(item.server_modified) : ''}}</td>
-    <td>
-      <i class="material-icons star-icon">star</i>
-    </td>
-    <td>
-      <i class="material-icons download-icon" (click)="saveFile(item.id, item.name)">{{item['.tag'] === 'file' ? 'cloud_download' : ''}}</i>
-    </td>
+    <div class="starred-list" *ngIf="starItems.indexOf(item.id) > -1">
+      <td>
+        <i class="material-icons ">{{item['.tag'] === 'file' ? 'insert_drive_file' : 'folder'}}</i>
+      </td>
+      <td class="table-file " *ngIf="item[ '.tag']==='file' ">{{item.name}}</td>
+      <td class="table-folder " *ngIf="item[ '.tag']==='folder' " routerLink="{{item.path_lower}}">{{item.name}}</td>
+      <td>{{item['.tag'] === 'file' ? formatFileSize(item.size) : ''}}</td>
+      <td>{{item['.tag'] === 'file' ? formatDateTime(item.server_modified) : ''}}</td>
+      <td>
+        <i class="material-icons star-icon " (click)="starItem(item.id) ">
+          {{starItems.indexOf(item.id)
+          < 0 ? 'star_border' : 'star'}} </i>
+      </td>
+      <td class="download-icon ">
+        <i class="material-icons download-icon " (click)="saveFile(item.id, item.name) ">{{item['.tag'] === 'file' ? 'cloud_download' : ''}}</i>
+      </td>
+    </div>
   </tr>
-</table>
+  <div class="normal-list" *ngFor="let item of items">
+    <tr *ngIf="starItems.indexOf(item.id) === -1">
+      <td>
+        <i class="material-icons ">{{item['.tag'] === 'file' ? 'insert_drive_file' : 'folder'}}</i>
+      </td>
+      <td class="table-file " *ngIf="item[ '.tag']==='file' ">{{item.name}}</td>
+      <td class="table-folder " *ngIf="item[ '.tag']==='folder' " routerLink="{{item.path_lower}}">{{item.name}}</td>
+      <td>{{item['.tag'] === 'file' ? formatFileSize(item.size) : ''}}</td>
+      <td>{{item['.tag'] === 'file' ? formatDateTime(item.server_modified) : ''}}</td>
+      <td>
+        <i class="material-icons star-icon " (click)="starItem(item.id) ">
+          {{starItems.indexOf(item.id)
+          < 0 ? 'star_border' : 'star'}} </i>
+      </td>
+      <td class="download-icon ">
+        <i class="material-icons download-icon " (click)="saveFile(item.id, item.name) ">{{item['.tag'] === 'file' ? 'cloud_download' : ''}}</i>
+      </td>
+    </tr>
+  </div>
+
+</table> -->

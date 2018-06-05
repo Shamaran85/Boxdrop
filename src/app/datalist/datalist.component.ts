@@ -11,6 +11,7 @@ import { DataService } from '../data.service';
 export class DatalistComponent implements OnInit {
 
   items = [];
+  starItems = [];
 
   constructor(public dropbox: DataService, private router: Router, private activeroute: ActivatedRoute) { }
 
@@ -24,6 +25,9 @@ export class DatalistComponent implements OnInit {
       this.router.url === '/' ? this.dropbox.getData('') : this.dropbox.getData(this.router.url);
     });
 
+    if (localStorage.getItem('staritems') !== null) {
+      this.starItems = JSON.parse(localStorage.getItem('staritems'));
+    }
   }
 
   formatFileSize(a, b) {
@@ -53,6 +57,31 @@ export class DatalistComponent implements OnInit {
       });
   }
 
+  starItem(id) {
+    const starId = id;
+    const tmp = this.starItems.indexOf(starId);
+
+    if (this.starItems.indexOf(starId) === -1) {
+      this.starItems.push(starId);
+      console.log('ID pushed: ', starId);
+      this.saveToLocalStorage();
+    } else {
+      this.starItems.splice(this.starItems.indexOf(starId), 1);
+      console.log('ID removed: ', starId);
+      this.saveToLocalStorage();
+    }
+    console.log(this.starItems);
+  }
+
+  saveToLocalStorage() {
+    localStorage.setItem('staritems', JSON.stringify(this.starItems));
+
+  }
+
+  checkPath(path) {
+    console.log('Check: ', path);
+  }
+
   thumbs(id) {
     const token = this.dropbox.accessToken;
     const path = id;
@@ -63,19 +92,32 @@ export class DatalistComponent implements OnInit {
         img.src = window.URL.createObjectURL(data.fileBlob);
         document.body.appendChild(img);
       })
-      .catch(function(error) {
+      .catch(function (error) {
         console.log('got error:', error);
 
       });
-  }
+    }
 
 
-  // thumb(id) {
-  //   const path = id;
-  //   this.dropbox.getThumbnail(path).subscribe((data: any) => {
-  //     console.log('data: ', data);
-  //   });
-  // }
+    // thumbs(id) {
+    //   const token = this.dropbox.accessToken;
+    //   const path = id;
+    //   const dbx = new Dropbox({ accessToken: token });
+    //   dbx.filesGetThumbnail({ path: path })
+    //     .then(function (data: any) {
+    //       console.log(data);
+    //       return data.name;
+    //     });
+    // }
 
 
+    // thumb(id) {
+    //   const path = id;
+    //   this.dropbox.getThumbnail(path).subscribe((data: any) => {
+    //     console.log('data: ', data);
+    //   });
+    // }
+
+
+  
 }

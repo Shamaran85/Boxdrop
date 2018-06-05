@@ -1,76 +1,11 @@
-.displayItems {
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
-}
-
-.displayItems li {
-    display: flex;
-    font-size: 16px;
-    height: 40px;
-    padding: 10px 0;
-    border-bottom: 1px solid #eee;
-    cursor: pointer;
-    transition: 200ms ease;
-}
-
-.displayItems li:hover {
-    background-color: #eee;
-}
-
-.item-icon {
-    flex: 0 0 10px;
-    background-color: green;
-    padding: 6px 0 6px 10px;
-}
-
-.item-name {
-    flex: 0 0 100px;
-    background-color: red;
-    padding: 10px;
-}
-
-.item-modified {
-    flex: 6;
-    text-align: right;
-    padding: 10px;
-}
-
-.item-size {
-    flex: 0 0 100px;
-    background-color: blue;
-    padding: 10px;
-}
-
-.item-star {}
-
-table {
-    border-collapse: collapse;
-    width: 100%;
-}
-
-td {
-    text-align: left;
-    padding: 12px 0;
-    outline: none;
-}
-
-/* td:nth-child(2):hover {
-    cursor: pointer;
-    color: #5d8ffc;
-} */
-
-td:first-child {
-    width: 25px;
-    padding: 12px;
-}
-
-tr:nth-child(even) {
-    background-color: #f2f2f2;
-}
-
 .material-icons {
     color: #555;
+}
+
+.starred-list, .starred-list .material-icons {
+    background-color: #5d8ffc;
+    color: #fff;
+    border-bottom: 50px;
 }
 
 .download-icon, .star-icon, .table-folder {
@@ -78,10 +13,67 @@ tr:nth-child(even) {
     transition: 200ms ease;
 }
 
-.download-icon:hover, .table-folder:hover {
+.download-icon:hover, .table-folder:hover, .star-icon:hover {
     color: #5d8ffc;
 }
 
-.star-icon:hover {
-    color: gold;
+.star-list-item {
+    display: flex;
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    background-color: #5d8ffc;
+    color: #fff;
+    cursor: pointer;
+}
+
+.star-list-item .material-icons {
+    color: #fff;
+}
+
+.list-item {
+    display: flex;
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+}
+
+.list-item:hover {
+    color: #5d8ffc;
+}
+
+.item-icon {
+    text-align: center;
+    flex: 0 0 40px;
+    /* background-color: red; */
+}
+
+.item-name {
+    flex: 0 0 300px;
+    line-height: 25px;
+    outline: none;
+    /* background-color: blue; */
+}
+
+.item-size {
+    flex: 0 0 100px;
+    line-height: 25px;
+    /* background-color: red; */
+}
+
+.item-modified {
+    flex: 0 0 160px;
+    line-height: 25px;
+    /* background-color: green; */
+}
+
+.item-star {
+    text-align: center;
+    flex: 0 0 40px;
+    /* background-color: blue; */
+}
+
+.item-download {
+    text-align: center;
+    flex: 0 0 40px;
+    /* background-color: red; */
 }
