@@ -100,6 +100,7 @@ export class DatalistComponent implements OnInit {
     }
 
 
+
     // thumb(id) {
     //   const path = id;
     //   this.dropbox.getThumbnail(path).subscribe((data: any) => {

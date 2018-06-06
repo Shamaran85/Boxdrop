@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-back',
@@ -7,20 +8,19 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./back.component.css']
 })
 
-export class BackComponent {
+export class BackComponent implements OnInit {
 
-  pathArray = [];
+  constructor(private router: Router, private activeroute: ActivatedRoute, private location: Location) { }
 
-  constructor(private router: Router, private activeroute: ActivatedRoute) {
-    const pathArray = this.router.url.split('/');
-    pathArray.pop();
+  ngOnInit() {
   }
 
-  // goBack() {
-  //   if (this.router.url !== '/') {
-  //     return window.history.back();
-  //   }
-  // }
+  goBack() {
+    if (this.router.url !== '/') {
+      // return window.history.back();
+      return this.location.back();
+    }
+  }
 
 
 }

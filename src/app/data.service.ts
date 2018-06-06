@@ -22,7 +22,6 @@ export class DataService {
 
   constructor(public http: Http) {
     this.stream = new BehaviorSubject(this.items);
-
   }
 
   getData(path?) {
@@ -38,6 +37,31 @@ export class DataService {
       this.stream.next(this.items);
     });
     return ob;
+  }
+
+
+  // https://www.dropbox.com/developers/documentation/http/documentation#files-search
+  searchFile(searchValue) {
+    const headers = new Headers();
+
+    headers.append('Authorization', 'Bearer ' + this.accessToken);
+    headers.append('Content-Type', 'application/json');
+
+    const query = {
+      'path': '',
+      'query': searchValue,
+      'start': 0,
+      'max_results': 100,
+      'mode': 'filename'
+    };
+
+    return this.http.post('https://api.dropboxapi.com/2/files/search', JSON.stringify(query), { headers: headers })
+      .pipe(map(res => res.json()));
+  }
+
+  searchResult(result) {
+    console.log('service result: ', result);
+    return result;
   }
 
 
