@@ -23,10 +23,11 @@
     <div class="item-icon">
       <i class="material-icons ">{{item['.tag'] === 'file' ? 'insert_drive_file' : 'folder'}}</i>
     </div>
-    <div class="item-name" *ngIf="item['.tag']==='file'">{{item.name}}</div>
+    <div class="item-name" (click)="thumbs(item.id)"*ngIf="item['.tag']==='file'">{{item.name}}</div>
     <div class="item-name" *ngIf="item['.tag']==='folder'" routerLink="{{item.path_lower}}">{{item.name}}</div>
     <div class="item-size">{{item['.tag'] === 'file' ? formatFileSize(item.size) : ''}}</div>
     <div class="item-modified">{{item['.tag'] === 'file' ? formatDateTime(item.server_modified) : ''}}</div>
+   
     <div class="item-star">
       <i class="material-icons star-icon " (click)="starItem(item.id) ">
         {{starItems.indexOf(item.id)

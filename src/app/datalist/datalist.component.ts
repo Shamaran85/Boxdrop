@@ -88,6 +88,7 @@ export class DatalistComponent implements OnInit {
     const dbx = new Dropbox({ accessToken: token });
     dbx.filesGetThumbnail({ path: path })
       .then(function (data: any) {
+        console.log(data);
         const img = document.createElement('img');
         img.src = window.URL.createObjectURL(data.fileBlob);
         document.body.appendChild(img);
@@ -99,25 +100,10 @@ export class DatalistComponent implements OnInit {
     }
 
 
-    // thumbs(id) {
-    //   const token = this.dropbox.accessToken;
-    //   const path = id;
-    //   const dbx = new Dropbox({ accessToken: token });
-    //   dbx.filesGetThumbnail({ path: path })
-    //     .then(function (data: any) {
-    //       console.log(data);
-    //       return data.name;
-    //     });
-    // }
-
-
     // thumb(id) {
     //   const path = id;
     //   this.dropbox.getThumbnail(path).subscribe((data: any) => {
     //     console.log('data: ', data);
     //   });
     // }
-
-
-  
 }
