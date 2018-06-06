@@ -77,11 +77,6 @@ export class DatalistComponent implements OnInit {
     localStorage.setItem('staritems', JSON.stringify(this.starItems));
   }
 
-  checkPath(path) {
-    console.log('Check: ', path);
-  }
-
-
 
   // thumbs(id) {
   //   const token = this.dropbox.accessToken;
