@@ -10,16 +10,21 @@ import { Dropbox } from 'dropbox';
 
 export class DataService {
 
-  accessToken: any = 'PjVheRC4lNAAAAAAAAAAEeQoR7oz26-cQRI-5zpne2ZARERKVEjHU3f_Vq932ccC';
+  accessToken: any;
   items: any;
   public stream;
   apiKey = 'k1hh5fcfbbbrv74';
-  redirectUri = 'http://localhost:4200';
+  redirectUri = 'http://localhost:4200/auth';
   url = `https://www.dropbox.com/1/oauth2/authorize?client_id=${this.apiKey}&redirect_uri=${this.redirectUri}&response_type=token`;
 
 
   constructor(public http: Http) {
     this.stream = new BehaviorSubject(this.items);
+    this.accessToken = localStorage.getItem('token');
+  }
+
+  setToken(token) {
+    this.accessToken = token;
   }
 
   getData(path?) {

@@ -8,3 +8,6 @@
 .right img {
     margin-top: 16px;
 }
+img {
+    cursor: pointer;
+}
