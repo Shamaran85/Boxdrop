@@ -4,11 +4,16 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { Dropbox } from 'dropbox';
 import { MainComponent } from './main/main.component';
+import { LoginAuthComponent } from './login-auth/login-auth.component';
+import { LoginComponent } from './login/login.component';
+import { AuthService } from './auth.service';
 
 export const appRoutes: Routes = [
-    
-    { path : '', redirectTo:'/login', pathMatch : 'full'},
-    { path: '**', component: MainComponent }
+
+    { path: 'auth', component: LoginAuthComponent },
+    { path: 'login', component: LoginComponent },
+    // { path: '', redirectTo: 'login', pathMatch: 'full' },
+    { path: '**', component: MainComponent, canActivate: [AuthService] },
 ];
 
 @NgModule({

@@ -19,6 +19,7 @@ import { LoginComponent } from './login/login.component';
 import { UploadComponent } from './upload/upload.component';
 import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
 import { SearchComponent } from './search/search.component';
+import { LoginAuthComponent } from './login-auth/login-auth.component';
 /*import { FavoritesComponent } from './favorites/favorites.component';
 import { ContentComponent } from './content/content.component';*/
 
@@ -36,6 +37,7 @@ import { ContentComponent } from './content/content.component';*/
     UploadComponent,
     BreadcrumbsComponent,
     SearchComponent,
+    LoginAuthComponent,
     /*FavoritesComponent,
     ContentComponent*/
   ],
