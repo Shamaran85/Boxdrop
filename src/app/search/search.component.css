@@ -17,24 +17,25 @@
     display: flex;
     padding: 10px 0;
     border-bottom: 1px solid #eee;
-    cursor: pointer;
     color: #555;
-}
-
-.search-result:hover {
-    color: #5d8ffc;
 }
 
 .result-icon {
     text-align: left;
     flex: 0 0 40px;
+    cursor: pointer;
 }
 
 .result-name {
+    cursor: pointer;
     text-align: left;
     flex: 0 0 300px;
     line-height: 25px;
     outline: none;
+}
+
+.result-name:hover {
+    color: #5d8ffc;
 }
 
 .clear-search-button {
