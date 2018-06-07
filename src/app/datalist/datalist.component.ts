@@ -75,11 +75,6 @@ export class DatalistComponent implements OnInit {
 
   saveToLocalStorage() {
     localStorage.setItem('staritems', JSON.stringify(this.starItems));
-
-  }
-
-  checkPath(path) {
-    console.log('Check: ', path);
   }
 
   thumbs(id) {
@@ -97,14 +92,14 @@ export class DatalistComponent implements OnInit {
         console.log('got error:', error);
 
       });
-    }
+  }
 
 
 
-    // thumb(id) {
-    //   const path = id;
-    //   this.dropbox.getThumbnail(path).subscribe((data: any) => {
-    //     console.log('data: ', data);
-    //   });
-    // }
+  // thumb(id) {
+  //   const path = id;
+  //   this.dropbox.getThumbnail(path).subscribe((data: any) => {
+  //     console.log('data: ', data);
+  //   });
+  // }
 }

@@ -4,7 +4,6 @@ import { map } from 'rxjs/operators';
 import { BehaviorSubject } from 'rxjs';
 import { Dropbox } from 'dropbox';
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -17,7 +16,6 @@ export class DataService {
   apiKey = 'k1hh5fcfbbbrv74';
   redirectUri = 'http://localhost:4200';
   url = `https://www.dropbox.com/1/oauth2/authorize?client_id=${this.apiKey}&redirect_uri=${this.redirectUri}&response_type=token`;
-
 
 
   constructor(public http: Http) {
@@ -39,7 +37,6 @@ export class DataService {
     return ob;
   }
 
-
   // https://www.dropbox.com/developers/documentation/http/documentation#files-search
   searchFile(searchValue) {
     const headers = new Headers();
@@ -58,11 +55,5 @@ export class DataService {
     return this.http.post('https://api.dropboxapi.com/2/files/search', JSON.stringify(query), { headers: headers })
       .pipe(map(res => res.json()));
   }
-
-  searchResult(result) {
-    console.log('service result: ', result);
-    return result;
-  }
-
 
 }

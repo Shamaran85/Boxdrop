@@ -1,5 +1,23 @@
-<div class="left">
+<div class="search-bar">
   <form (submit)="search($event)">
     <input type="text" id="search-token" placeholder="Search and press enter..." autocomplete="off" />
   </form>
 </div>
+
+<div class="search-result-container" *ngIf="searchResults && searchResults.length !== 0">
+  <div *ngFor="let result of searchResults">
+    <div class="search-result">
+      <div class="result-icon">
+        <i class="material-icons ">{{result['.tag'] === 'file' ? 'insert_drive_file' : 'folder'}}</i>
+      </div>
+      <div class="result-name" *ngIf="result['.tag']==='file'" (click)="saveFile(result.id, result.name)">{{result.name}}</div>
+      <div class="result-name" *ngIf="result['.tag']==='folder'" routerLink="{{result.path_lower}}">{{result.name}}</div>
+    </div>
+  </div>
+</div>
+
+<div class="search-result" *ngIf="searchResults && searchResults.length === 0">
+  <p>No results</p>
+</div>
+
+<button class="claer-search-button" *ngIf="searchResults" (click)="clearSearchInput()">Clear</button>
