@@ -6,9 +6,9 @@ import { Dropbox } from 'dropbox';
 import { MainComponent } from './main/main.component';
 
 export const appRoutes: Routes = [
-    { path: '**', component: MainComponent },
-    { path: '', component: MainComponent },
-   // { path : '', redirectTo:'/login', pathMatch : 'full'}
+    
+    { path : '', redirectTo:'/login', pathMatch : 'full'},
+    { path: '**', component: MainComponent }
 ];
 
 @NgModule({
