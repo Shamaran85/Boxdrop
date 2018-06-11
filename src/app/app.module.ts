@@ -5,6 +5,7 @@ import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
+
 // Services & Routes
 import { DataService } from './data.service';
 import { appRoutes } from './routes';
@@ -38,6 +39,7 @@ import { ContentComponent } from './content/content.component';*/
     BreadcrumbsComponent,
     SearchComponent,
     LoginAuthComponent,
+    
     /*FavoritesComponent,
     ContentComponent*/
   ],
@@ -45,9 +47,10 @@ import { ContentComponent } from './content/content.component';*/
     BrowserModule,
     HttpModule,
     RouterModule.forRoot(appRoutes),
-    FormsModule
+    FormsModule,
+    
   ],
-  providers: [DataService],
+  providers: [DataService ],
   bootstrap: [AppComponent]
 })
 

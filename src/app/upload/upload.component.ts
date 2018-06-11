@@ -10,7 +10,7 @@ import { DataService } from '../data.service';
 })
 export class UploadComponent implements OnInit {
 
-  constructor(public dropbox: DataService, private router: Router, private activeroute: ActivatedRoute) { }
+  constructor(public dropbox: DataService, private router: Router , public activeRoute: ActivatedRoute) { }
 
   ngOnInit() {
   }
