@@ -16,6 +16,7 @@ export class DatalistComponent implements OnInit {
   constructor(public dropbox: DataService, private router: Router, private activeroute: ActivatedRoute) { }
 
   ngOnInit() {
+
     this.dropbox.stream.subscribe((items) => {
       console.log('main items: ', items);
       this.items = items;
@@ -85,8 +86,11 @@ export class DatalistComponent implements OnInit {
       .then(function (data: any) {
         console.log(data);
         const img = document.createElement('img');
-        img.src = window.URL.createObjectURL(data.fileBlob);
-        document.body.appendChild(img);
+        const thumbnail = window.URL.createObjectURL(data.fileBlob);
+        img.setAttribute('src', thumbnail);
+        console.log(img);
+
+
       })
       .catch(function (error) {
         console.log('got error:', error);

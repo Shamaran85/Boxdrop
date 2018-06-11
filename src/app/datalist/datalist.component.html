@@ -4,6 +4,7 @@
       <i class="material-icons ">{{item['.tag'] === 'file' ? 'insert_drive_file' : 'folder'}}</i>
     </div>
     <div class="item-name" *ngIf="item['.tag']==='file'">{{item.name}}</div>
+
     <div class="item-name" *ngIf="item['.tag']==='folder'" routerLink="{{item.path_lower}}">{{item.name}}</div>
     <div class="item-size">{{item['.tag'] === 'file' ? formatFileSize(item.size) : ''}}</div>
     <div class="item-modified">{{item['.tag'] === 'file' ? formatDateTime(item.server_modified) : ''}}</div>
@@ -37,4 +38,5 @@
       <i class="material-icons download-icon " (click)="saveFile(item.id, item.name) ">{{item['.tag'] === 'file' ? 'cloud_download' : ''}}</i>
     </div>
   </div>
+
 </div>
