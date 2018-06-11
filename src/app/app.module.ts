@@ -4,9 +4,12 @@ import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+
+// Firebase
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
-
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { environment } from '../environments/environment';
 
 // Services & Routes
 import { DataService } from './data.service';
@@ -23,10 +26,6 @@ import { UploadComponent } from './upload/upload.component';
 import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
 import { SearchComponent } from './search/search.component';
 import { LoginAuthComponent } from './login-auth/login-auth.component';
-/*import { FavoritesComponent } from './favorites/favorites.component';
-import { ContentComponent } from './content/content.component';*/
-
-// Search
 
 
 @NgModule({
@@ -40,22 +39,18 @@ import { ContentComponent } from './content/content.component';*/
     UploadComponent,
     BreadcrumbsComponent,
     SearchComponent,
-    LoginAuthComponent,
-
-    
-    /*FavoritesComponent,
-    ContentComponent*/
+    LoginAuthComponent
   ],
   imports: [
     BrowserModule,
     HttpModule,
     RouterModule.forRoot(appRoutes),
     FormsModule,
-    AngularFireModule/*.initializeApp(envronment.firebase, 'angularfs')*/,
-    AngularFirestoreModule
-    
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
+    AngularFireDatabaseModule
   ],
-  providers: [DataService ],
+  providers: [DataService],
   bootstrap: [AppComponent]
 })
 

@@ -2,8 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Dropbox } from 'dropbox';
 import { DataService } from '../data.service';
-
 import { DomSanitizer } from '@angular/platform-browser';
+
+import { AngularFireDatabase } from 'angularfire2/database';
+import { environment } from '../../environments/environment';
+
 
 @Component({
   selector: 'app-datalist',
@@ -20,10 +23,10 @@ export class DatalistComponent implements OnInit {
     public dropbox: DataService,
     private router: Router,
     private activeroute: ActivatedRoute,
-    public _DomSanitizationService: DomSanitizer) { }
+    public _DomSanitizationService: DomSanitizer,
+    public firebase: AngularFireDatabase) { }
 
   ngOnInit() {
-
 
     this.dropbox.stream.subscribe((items) => {
       this.items = items;
@@ -36,6 +39,23 @@ export class DatalistComponent implements OnInit {
     if (localStorage.getItem('staritems') !== null) {
       this.starItems = JSON.parse(localStorage.getItem('staritems'));
     }
+
+    this.firebase.list('/updates').valueChanges().subscribe((t) => {
+      console.log('hej', t);
+      this.router.url === '/' ? this.dropbox.getData('') : this.dropbox.getData(this.router.url);
+    });
+
+    // this.firebase.database.ref().child('updates').on
+
+    // this.firebase.database.ref().child('updates').on('child_added', function (data) {
+    //   console.log('hej', t);
+    //   this.router.url === '/' ? this.dropbox.getData('') : this.dropbox.getData(this.router.url);
+    // });
+
+
+    // admin.database().ref().child('updates').on('child_added', function (data) {
+    //   console.log('Heya');
+    // });
   }
 
   sanitize(item) {
