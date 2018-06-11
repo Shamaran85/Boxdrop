@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "boxdrop-66379"
+    "default": "boxdrop-66379",
+    "boxdrop": "boxdrop-66379"
   }
 }

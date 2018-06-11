@@ -24,7 +24,7 @@ export class UploadComponent implements OnInit {
     const filePath = tmpPath.replace('//', '/');
     dbx.filesUpload({ path: filePath, contents: file })
       .then(function (response) {
-        console.log(response);
+        console.log('Upload Success!');
       })
       .catch(function (error) {
         console.error(error);
