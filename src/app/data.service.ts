@@ -18,6 +18,9 @@ export class DataService {
   url = `https://www.dropbox.com/1/oauth2/authorize?client_id=${this.apiKey}&redirect_uri=${this.redirectUri}&response_type=token`;
 
 
+  imageTypes = ['jpg', 'jpeg', 'png', 'gif', 'bmp', 'tif', 'tiff'];
+
+
   constructor(public http: Http) {
     this.stream = new BehaviorSubject(this.items);
     this.accessToken = localStorage.getItem('token');
@@ -37,6 +40,26 @@ export class DataService {
       .pipe(map(res => res.json()));
     ob.subscribe((data) => {
       this.items = data.entries;
+      console.log('service: ', this.items);
+      this.items.forEach(item => {
+        const ePath = item.path_lower;
+        const ext = ePath.substring(ePath.lastIndexOf('.') + 1, ePath.length);
+        const typeCheck = this.imageTypes.indexOf(ext);
+
+        if (typeCheck !== -1) {
+          const token = this.accessToken;
+          const dbx = new Dropbox({ accessToken: token });
+          dbx.filesGetThumbnail({ path: item.id })
+            .then(function (thumb: any) {
+              const thumbnail = window.URL.createObjectURL(thumb.fileBlob);
+              item.thumbNail = thumbnail;
+            })
+            .catch(function (error) {
+              console.log('got error:', error);
+            });
+        }
+        console.log(item);
+      });
       this.stream.next(this.items);
     });
     return ob;
