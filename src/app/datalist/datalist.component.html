@@ -53,7 +53,7 @@
         {{item['.tag'] === 'file' ? 'insert_drive_file' : 'folder'}}
       </i>
 
-      <img [src]="sanitize(item)" width="25" height="25" [id]="item.path_lower" *ngIf="item.thumbNail && gitimageTypes.indexOf(item.path_lower.substring(item.path_lower.lastIndexOf('.') + 1, item.path_lower.length)) !== -1">
+      <img [src]="sanitize(item)" width="25" height="25" [id]="item.path_lower" *ngIf="item.thumbNail && imageTypes.indexOf(item.path_lower.substring(item.path_lower.lastIndexOf('.') + 1, item.path_lower.length)) !== -1">
     </div>
 
     <!-- File/Folder Names -->
