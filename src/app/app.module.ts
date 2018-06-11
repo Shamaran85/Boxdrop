@@ -4,6 +4,8 @@ import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
 
 
 // Services & Routes
@@ -39,6 +41,7 @@ import { ContentComponent } from './content/content.component';*/
     BreadcrumbsComponent,
     SearchComponent,
     LoginAuthComponent,
+
     
     /*FavoritesComponent,
     ContentComponent*/
@@ -48,6 +51,8 @@ import { ContentComponent } from './content/content.component';*/
     HttpModule,
     RouterModule.forRoot(appRoutes),
     FormsModule,
+    AngularFireModule/*.initializeApp(envronment.firebase, 'angularfs')*/,
+    AngularFirestoreModule
     
   ],
   providers: [DataService ],
