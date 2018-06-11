@@ -1,5 +1,13 @@
 # Boxdrop
 
+A school project using angular and dropbox api v2.
+
+# Demo
+
+https://boxdrop-66379.firebaseapp.com
+
+# Angular CLI
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.3.
 
 ## Development server
