@@ -40,7 +40,6 @@ export class DataService {
       .pipe(map(res => res.json()));
     ob.subscribe((data) => {
       this.items = data.entries;
-      console.log('service: ', this.items);
       this.items.forEach(item => {
         const ePath = item.path_lower;
         const ext = ePath.substring(ePath.lastIndexOf('.') + 1, ePath.length);
@@ -58,7 +57,7 @@ export class DataService {
               console.log('got error:', error);
             });
         }
-        console.log(item);
+        // console.log(item);
       });
       this.stream.next(this.items);
     });
