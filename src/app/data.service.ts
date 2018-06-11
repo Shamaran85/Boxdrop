@@ -40,7 +40,9 @@ export class DataService {
       .pipe(map(res => res.json()));
     ob.subscribe((data) => {
       this.items = data.entries;
-      this.items.forEach(item => {
+      this.stream.next(this.items);
+
+      return Promise.all(this.items.map((item) => {
         const ePath = item.path_lower;
         const ext = ePath.substring(ePath.lastIndexOf('.') + 1, ePath.length);
         const typeCheck = this.imageTypes.indexOf(ext);
@@ -48,18 +50,21 @@ export class DataService {
         if (typeCheck !== -1) {
           const token = this.accessToken;
           const dbx = new Dropbox({ accessToken: token });
-          dbx.filesGetThumbnail({ path: item.id })
+          return dbx.filesGetThumbnail({ path: item.id })
             .then(function (thumb: any) {
               const thumbnail = window.URL.createObjectURL(thumb.fileBlob);
               item.thumbNail = thumbnail;
+              return item;
             })
             .catch(function (error) {
               console.log('got error:', error);
             });
+        } else {
+          return Promise.resolve(item);
         }
-        // console.log(item);
+      })).then((items) => {
+        this.stream.next(items);
       });
-      this.stream.next(this.items);
     });
     return ob;
   }
