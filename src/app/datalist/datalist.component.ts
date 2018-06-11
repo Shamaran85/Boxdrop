@@ -20,7 +20,7 @@ export class DatalistComponent implements OnInit {
     public dropbox: DataService,
     private router: Router,
     private activeroute: ActivatedRoute,
-    private _DomSanitizationService: DomSanitizer) { }
+    public _DomSanitizationService: DomSanitizer) { }
 
   ngOnInit() {
 
@@ -36,6 +36,10 @@ export class DatalistComponent implements OnInit {
     if (localStorage.getItem('staritems') !== null) {
       this.starItems = JSON.parse(localStorage.getItem('staritems'));
     }
+  }
+
+  sanitize(item) {
+    return this._DomSanitizationService.bypassSecurityTrustUrl(item.thumbNail);
   }
 
 
