@@ -17,7 +17,6 @@ export class BackComponent implements OnInit {
 
   goBack() {
     if (this.router.url !== '/') {
-      // return window.history.back();
       return this.location.back();
     }
   }

@@ -20,13 +20,11 @@ export class UploadComponent implements OnInit {
     const dbx = new Dropbox({ accessToken: accessToken });
     const fileInput = (<HTMLInputElement>document.getElementById('file-upload'));
     const file = fileInput.files[0];
-    // const filePath = this.router.url !== '' ? this.router.url + file.name : this.router.url + '/' + file.name;
     const tmpPath = this.router.url + '/' + file.name;
     const filePath = tmpPath.replace('//', '/');
     dbx.filesUpload({ path: filePath, contents: file })
       .then(function (response) {
         console.log(response);
-        // location.reload();
       })
       .catch(function (error) {
         console.error(error);

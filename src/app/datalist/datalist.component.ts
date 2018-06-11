@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Dropbox } from 'dropbox';
-import { DataService } from '../data.service';
 import { DomSanitizer } from '@angular/platform-browser';
 
+import { Dropbox } from 'dropbox';
+import { DataService } from '../data.service';
 import { AngularFireDatabase } from 'angularfire2/database';
-import { environment } from '../../environments/environment';
 
 
 @Component({
@@ -41,27 +40,14 @@ export class DatalistComponent implements OnInit {
     }
 
     this.firebase.list('/updates').valueChanges().subscribe((t) => {
-      console.log('hej', t);
+      console.log('Webhook: ', t);
       this.router.url === '/' ? this.dropbox.getData('') : this.dropbox.getData(this.router.url);
     });
-
-    // this.firebase.database.ref().child('updates').on
-
-    // this.firebase.database.ref().child('updates').on('child_added', function (data) {
-    //   console.log('hej', t);
-    //   this.router.url === '/' ? this.dropbox.getData('') : this.dropbox.getData(this.router.url);
-    // });
-
-
-    // admin.database().ref().child('updates').on('child_added', function (data) {
-    //   console.log('Heya');
-    // });
   }
 
   sanitize(item) {
     return this._DomSanitizationService.bypassSecurityTrustUrl(item.thumbNail);
   }
-
 
   formatFileSize(a, b) {
     if (1024 >= a) { return '1 KB'; } const c = 1024, d = b || 2,
@@ -92,18 +78,13 @@ export class DatalistComponent implements OnInit {
 
   starItem(id) {
     const starId = id;
-    const tmp = this.starItems.indexOf(starId);
-
     if (this.starItems.indexOf(starId) === -1) {
       this.starItems.push(starId);
-      console.log('ID pushed: ', starId);
       this.saveToLocalStorage();
     } else {
       this.starItems.splice(this.starItems.indexOf(starId), 1);
-      console.log('ID removed: ', starId);
       this.saveToLocalStorage();
     }
-    console.log(this.starItems);
   }
 
   saveToLocalStorage() {

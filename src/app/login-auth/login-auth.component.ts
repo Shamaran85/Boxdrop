@@ -20,7 +20,6 @@ export class LoginAuthComponent implements OnInit {
         const authTokenParams = params[1].split('&');
         const authToken = authTokenParams[0];
         localStorage.setItem('token', authToken);
-        console.log(authToken, currentUrl);
         this.dropbox.setToken(authToken);
         this.dropbox.getData('');
         this.router.navigate(['']);
@@ -32,7 +31,6 @@ export class LoginAuthComponent implements OnInit {
 
   getFiles() {
     const authToken = localStorage.getItem('token');
-
     const options = {
       'headers': new HttpHeaders({
         'Authorization': authToken
