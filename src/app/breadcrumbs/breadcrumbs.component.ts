@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Dropbox } from 'dropbox';
 import { DataService } from '../data.service';
@@ -8,7 +8,7 @@ import { DataService } from '../data.service';
   templateUrl: './breadcrumbs.component.html',
   styleUrls: ['./breadcrumbs.component.css']
 })
-export class BreadcrumbsComponent implements OnInit {
+export class BreadcrumbsComponent {
 
   breadcrumbs = [];
 
@@ -18,12 +18,10 @@ export class BreadcrumbsComponent implements OnInit {
       this.breadcrumbs = [];
       let fullpath = '';
 
-
       let pathArray = this.router.url.split('/');
       if (this.router.url === '' || this.router.url === '/') {
         pathArray = [''];
       }
-
 
       for (const path of pathArray) {
         if (path !== '') {
@@ -34,16 +32,9 @@ export class BreadcrumbsComponent implements OnInit {
           fullpath: fullpath,
           path: path
         };
+
         this.breadcrumbs.push(breadcrumb);
-        // console.log('bc: ', this.breadcrumbs);
       }
-
-      console.log('bc: ', this.breadcrumbs, this.router.url);
-
     });
-
   }
-
-  ngOnInit() { }
-
 }
