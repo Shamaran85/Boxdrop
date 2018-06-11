@@ -1,44 +1,13 @@
-.material-icons {
-    color: #555;
-}
+/* Datalist items styles */
 
-.starred-list, .starred-list .material-icons {
-    background-color: #5d8ffc;
-    color: #fff;
-    border-bottom: 50px;
-}
-
-.download-icon, .star-icon, .table-folder {
-    cursor: pointer;
-    transition: 200ms ease;
-}
-
-.download-icon:hover, .table-folder:hover, .star-icon:hover {
-    color: #5d8ffc;
-}
-
-.star-list-item {
+.item {
     display: flex;
     padding: 10px;
     border-bottom: 1px solid #eee;
-    background-color: #5d8ffc;
-    color: #fff;
-    cursor: pointer;
 }
 
-.star-list-item .material-icons {
-    color: #fff;
-}
-
-.list-item {
-    display: flex;
-    padding: 10px;
-    border-bottom: 1px solid #eee;
-    cursor: pointer;
-}
-
-.list-item:hover {
-    color: #5d8ffc;
+.item:hover {
+    background-color: #eee;
 }
 
 .item-icon {
@@ -50,6 +19,13 @@
     flex: 0 0 300px;
     line-height: 25px;
     outline: none;
+}
+
+.item-name-folder {
+    flex: 0 0 300px;
+    line-height: 25px;
+    outline: none;
+    cursor: pointer;
 }
 
 .item-size {
@@ -70,4 +46,23 @@
 .item-download {
     text-align: center;
     flex: 0 0 40px;
+}
+
+/* Icons Styles */
+
+.material-icons {
+    color: #555;
+}
+
+.star-filled {
+    color: #5d8ffc;
+}
+
+.download-icon, .star-empty, .star-filled {
+    cursor: pointer;
+    transition: 200ms ease;
+}
+
+.download-icon:hover, .star-empty:hover {
+    color: #5d8ffc;
 }
