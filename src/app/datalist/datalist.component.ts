@@ -12,13 +12,14 @@ export class DatalistComponent implements OnInit {
 
   items = [];
   starItems = [];
+  imageTypes = ['jpg', 'jpeg', 'png', 'gif', 'bmp', 'tif', 'tiff'];
 
   constructor(public dropbox: DataService, private router: Router, private activeroute: ActivatedRoute) { }
 
   ngOnInit() {
 
+
     this.dropbox.stream.subscribe((items) => {
-      console.log('main items: ', items);
       this.items = items;
     });
 
@@ -30,6 +31,7 @@ export class DatalistComponent implements OnInit {
       this.starItems = JSON.parse(localStorage.getItem('staritems'));
     }
   }
+
 
   formatFileSize(a, b) {
     if (1024 >= a) { return '1 KB'; } const c = 1024, d = b || 2,
@@ -78,32 +80,56 @@ export class DatalistComponent implements OnInit {
     localStorage.setItem('staritems', JSON.stringify(this.starItems));
   }
 
-  thumbs(id) {
+
+  // *ngIf="imageTypes.indexOf(item.path_lower.substring(item.path_lower.lastIndexOf('.') + 1, item.path_lower.length)) === -1"
+
+  getThumbnail(filePath, fileId) {
+
+    const id = fileId;
+    const path = filePath;
+
     const token = this.dropbox.accessToken;
-    const path = id;
     const dbx = new Dropbox({ accessToken: token });
-    dbx.filesGetThumbnail({ path: path })
+    dbx.filesGetThumbnail({ path: id })
       .then(function (data: any) {
-        console.log(data);
-        const img = document.createElement('img');
-        const thumbnail = window.URL.createObjectURL(data.fileBlob);
-        img.setAttribute('src', thumbnail);
-        console.log(img);
-
-
+        const blobUrl = window.URL.createObjectURL(data.fileBlob);
+        const attributeId = document.getElementById(path);
+        attributeId.setAttribute('src', blobUrl);
       })
       .catch(function (error) {
         console.log('got error:', error);
-
       });
+  }
+
+  checkFileType(filePath, fileId) {
+    const id = fileId;
+    const path = filePath;
+    const ext = path.substring(path.lastIndexOf('.') + 1, path.length);
+    const typeCheck = this.imageTypes.indexOf(ext);
+
+    console.log(`Type: ${typeCheck} | Ext: ${ext} | Path: ${path}`);
+
+    typeCheck !== -1 ? this.getThumbnail(path, id) : console.error('Not an image.');
   }
 
 
 
-  // thumb(id) {
+  // thumbs(id) {
+  //   const token = this.dropbox.accessToken;
   //   const path = id;
-  //   this.dropbox.getThumbnail(path).subscribe((data: any) => {
-  //     console.log('data: ', data);
-  //   });
+  //   const dbx = new Dropbox({ accessToken: token });
+  //   dbx.filesGetThumbnail({ path: path })
+  //     .then(function (data: any) {
+  //       console.log(data);
+  //       const img = document.createElement('img');
+  //       img.src = window.URL.createObjectURL(data.fileBlob);
+  //       document.body.appendChild(img);
+  //     })
+  //     .catch(function (error) {
+  //       console.log('got error:', error);
+
+  //     });
   // }
+
+
 }
