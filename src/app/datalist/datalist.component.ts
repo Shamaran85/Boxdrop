@@ -3,6 +3,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Dropbox } from 'dropbox';
 import { DataService } from '../data.service';
 
+import { DomSanitizer } from '@angular/platform-browser';
+
 @Component({
   selector: 'app-datalist',
   templateUrl: './datalist.component.html',
@@ -14,7 +16,11 @@ export class DatalistComponent implements OnInit {
   starItems = [];
   imageTypes = ['jpg', 'jpeg', 'png', 'gif', 'bmp', 'tif', 'tiff'];
 
-  constructor(public dropbox: DataService, private router: Router, private activeroute: ActivatedRoute) { }
+  constructor(
+    public dropbox: DataService,
+    private router: Router,
+    private activeroute: ActivatedRoute,
+    private _DomSanitizationService: DomSanitizer) { }
 
   ngOnInit() {
 
@@ -79,57 +85,5 @@ export class DatalistComponent implements OnInit {
   saveToLocalStorage() {
     localStorage.setItem('staritems', JSON.stringify(this.starItems));
   }
-
-
-  // *ngIf="imageTypes.indexOf(item.path_lower.substring(item.path_lower.lastIndexOf('.') + 1, item.path_lower.length)) === -1"
-
-  getThumbnail(filePath, fileId) {
-
-    const id = fileId;
-    const path = filePath;
-
-    const token = this.dropbox.accessToken;
-    const dbx = new Dropbox({ accessToken: token });
-    dbx.filesGetThumbnail({ path: id })
-      .then(function (data: any) {
-        const blobUrl = window.URL.createObjectURL(data.fileBlob);
-        const attributeId = document.getElementById(path);
-        attributeId.setAttribute('src', blobUrl);
-      })
-      .catch(function (error) {
-        console.log('got error:', error);
-      });
-  }
-
-  checkFileType(filePath, fileId) {
-    const id = fileId;
-    const path = filePath;
-    const ext = path.substring(path.lastIndexOf('.') + 1, path.length);
-    const typeCheck = this.imageTypes.indexOf(ext);
-
-    console.log(`Type: ${typeCheck} | Ext: ${ext} | Path: ${path}`);
-
-    typeCheck !== -1 ? this.getThumbnail(path, id) : console.error('Not an image.');
-  }
-
-
-
-  // thumbs(id) {
-  //   const token = this.dropbox.accessToken;
-  //   const path = id;
-  //   const dbx = new Dropbox({ accessToken: token });
-  //   dbx.filesGetThumbnail({ path: path })
-  //     .then(function (data: any) {
-  //       console.log(data);
-  //       const img = document.createElement('img');
-  //       img.src = window.URL.createObjectURL(data.fileBlob);
-  //       document.body.appendChild(img);
-  //     })
-  //     .catch(function (error) {
-  //       console.log('got error:', error);
-
-  //     });
-  // }
-
 
 }
