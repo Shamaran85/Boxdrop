@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-back',
@@ -10,17 +9,17 @@ import { Location } from '@angular/common';
 
 export class BackComponent implements OnInit {
 
-  constructor(private router: Router, private activeroute: ActivatedRoute, private location: Location) { }
+  pathBack: any;
 
-  ngOnInit() {
+  constructor(private router: Router, private activeroute: ActivatedRoute) {
+
+    this.activeroute.url.subscribe((items) => {
+      const currentPath = this.router.url;
+      const newPath = currentPath.substring(0, currentPath.lastIndexOf('/') + 1);
+      this.pathBack = newPath;
+    });
   }
 
-  goBack() {
-    if (this.router.url !== '/') {
-      // return window.history.back();
-      return this.location.back();
-    }
-  }
-
+  ngOnInit() { }
 
 }

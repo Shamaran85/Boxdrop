@@ -17,7 +17,6 @@ export class SearchComponent implements OnInit {
   ngOnInit() {
   }
 
-  // https://www.dropbox.com/developers/documentation/http/documentation#files-search
   search(event) {
     event.preventDefault();
     this.searchResults = [];
@@ -26,9 +25,6 @@ export class SearchComponent implements OnInit {
       this.dropbox.searchFile(searchValue).subscribe((data: any) => {
         for (const i of data.matches) {
           this.searchResults.push(i.metadata);
-        }
-        if (this.searchResults.length !== 0) {
-          console.log('Search: ', this.searchResults);
         }
       });
     } else {
@@ -39,7 +35,6 @@ export class SearchComponent implements OnInit {
   clearSearchInput() {
     (<HTMLInputElement>document.getElementById('search-token')).value = '';
     this.searchResults = null;
-    console.log('search array cleared');
   }
 
   saveFile(id, name) {

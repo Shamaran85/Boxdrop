@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { DomSanitizer } from '@angular/platform-browser';
+
 import { Dropbox } from 'dropbox';
 import { DataService } from '../data.service';
+import { AngularFireDatabase } from 'angularfire2/database';
 
-import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-datalist',
@@ -20,10 +22,10 @@ export class DatalistComponent implements OnInit {
     public dropbox: DataService,
     private router: Router,
     private activeroute: ActivatedRoute,
-    public _DomSanitizationService: DomSanitizer) { }
+    public _DomSanitizationService: DomSanitizer,
+    public firebase: AngularFireDatabase) { }
 
   ngOnInit() {
-
 
     this.dropbox.stream.subscribe((items) => {
       this.items = items;
@@ -36,12 +38,16 @@ export class DatalistComponent implements OnInit {
     if (localStorage.getItem('staritems') !== null) {
       this.starItems = JSON.parse(localStorage.getItem('staritems'));
     }
+
+    this.firebase.list('/updates').valueChanges().subscribe((t) => {
+      console.log('Webhook: ', t);
+      this.router.url === '/' ? this.dropbox.getData('') : this.dropbox.getData(this.router.url);
+    });
   }
 
   sanitize(item) {
     return this._DomSanitizationService.bypassSecurityTrustUrl(item.thumbNail);
   }
-
 
   formatFileSize(a, b) {
     if (1024 >= a) { return '1 KB'; } const c = 1024, d = b || 2,
@@ -72,18 +78,13 @@ export class DatalistComponent implements OnInit {
 
   starItem(id) {
     const starId = id;
-    const tmp = this.starItems.indexOf(starId);
-
     if (this.starItems.indexOf(starId) === -1) {
       this.starItems.push(starId);
-      console.log('ID pushed: ', starId);
       this.saveToLocalStorage();
     } else {
       this.starItems.splice(this.starItems.indexOf(starId), 1);
-      console.log('ID removed: ', starId);
       this.saveToLocalStorage();
     }
-    console.log(this.starItems);
   }
 
   saveToLocalStorage() {

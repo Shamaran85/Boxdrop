@@ -4,8 +4,6 @@ import { map } from 'rxjs/operators';
 import { BehaviorSubject } from 'rxjs';
 import { Dropbox } from 'dropbox';
 
-import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
-
 @Injectable({
   providedIn: 'root'
 })
@@ -16,7 +14,8 @@ export class DataService {
   items: any;
   public stream;
   apiKey = 'k1hh5fcfbbbrv74';
-  redirectUri = 'http://localhost:4200/auth';
+  // redirectUri = 'http://localhost:4200/auth';
+  redirectUri = 'https://boxdrop-66379.firebaseapp.com/auth';
   url = `https://www.dropbox.com/1/oauth2/authorize?client_id=${this.apiKey}&redirect_uri=${this.redirectUri}&response_type=token`;
 
 

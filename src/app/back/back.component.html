@@ -1,5 +1,5 @@
 <div class="left">
-  <a *ngIf="this.router.url !== '/'" (click)="goBack()">
+  <a *ngIf="this.router.url !== '/'" routerLink="{{pathBack}}">
     <img src="../../assets/images/back.png " alt="back " width="24px " height="24px ">
     <span>Back</span>
   </a>
