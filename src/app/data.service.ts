@@ -14,7 +14,7 @@ export class DataService {
   items: any;
   public stream;
   apiKey = 'k1hh5fcfbbbrv74';
-  // redirectUri = 'http://localhost:4200/auth';
+  
   redirectUri = 'https://boxdrop-66379.firebaseapp.com/auth';
   url = `https://www.dropbox.com/1/oauth2/authorize?client_id=${this.apiKey}&redirect_uri=${this.redirectUri}&response_type=token`;
 
@@ -70,7 +70,7 @@ export class DataService {
     return ob;
   }
 
-  // https://www.dropbox.com/developers/documentation/http/documentation#files-search
+  
   searchFile(searchValue) {
     const headers = new Headers();
 
